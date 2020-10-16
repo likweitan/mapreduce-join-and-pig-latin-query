@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class ReduceJoin {
     public static void main(String[] args) throws Exception {
-        Job job = new Job(new Configuration());
-        job.setJarByClass(Join.class);
+        Job job = Job.getInstance();
+        job.setJarByClass(ReduceJoin.class);
 
         job.setNumReduceTasks(1);
 
