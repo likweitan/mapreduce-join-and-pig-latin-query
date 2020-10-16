@@ -12,12 +12,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 import java.io.IOException;
 
-/**
- * Author: Jiankai Dang
- * Date: 11/22/13
- * Time: 5:35 PM
- */
-public class Join {
+public class ReduceJoin {
     public static void main(String[] args) throws Exception {
         Job job = new Job(new Configuration());
         job.setJarByClass(Join.class);
@@ -48,7 +43,8 @@ public class Join {
 
             if (line.contains("\"")) {
                 int i = line.lastIndexOf(","), j = line.indexOf(",");
-                context.write(new Text(line.substring(i + 1) + ",1"), new Text(line.substring(0, j) + "\t" + line.substring(j + 1, i)));
+                context.write(new Text(line.substring(i + 1) + ",1"),
+                        new Text(line.substring(0, j) + "\t" + line.substring(j + 1, i)));
             } else {
                 String[] s = line.split(",");
                 context.write(new Text(s[0] + ",0"), new Text(s[1] + "\t" + s[2]));
@@ -59,8 +55,7 @@ public class Join {
     public static class Reduce extends Reducer<Text, Text, Text, Text> {
         private String userInfo = null;
 
-        public void reduce(Text key, Iterable<Text> values, Context context)
-                throws IOException, InterruptedException {
+        public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
             String keyStr = key.toString();
             if (keyStr.endsWith(",0")) {
                 userInfo = values.iterator().next().toString();
