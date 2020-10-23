@@ -12,10 +12,10 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 import java.io.IOException;
 
-public class ReduceJoin {
+public class Join {
     public static void main(String[] args) throws Exception {
-        Job job = Job.getInstance();
-        job.setJarByClass(ReduceJoin.class);
+        Job job = new Job(new Configuration());
+        job.setJarByClass(Join.class);
 
         job.setNumReduceTasks(1);
 
