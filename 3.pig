@@ -3,4 +3,4 @@ tweets = LOAD 'hdfs://localhost:9000/group_assignment/tweets.csv' USING PigStora
 
 users_join_tweets = JOIN users BY login, tweets BY login;
 
-STORE users_join_tweets INTO 'hdfs://localhost:9000/group_assignment/results/3/' USING PigStorage (',');
+STORE users_join_tweets INTO 'hdfs://localhost:9000/group_assignment/3.result' USING PigStorage (',');

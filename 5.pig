@@ -6,4 +6,4 @@ users_join_tweets = JOIN users BY login LEFT, tweets BY login;
 name_group = GROUP users_join_tweets BY name;
 number_of_tweets = FOREACH name_group GENERATE group, COUNT(users_join_tweets.id);
 
-STORE number_of_tweets INTO 'hdfs://localhost:9000/group_assignment/4.result' USING PigStorage (',');
+STORE number_of_tweets INTO 'hdfs://localhost:9000/group_assignment/5.result/' USING PigStorage (',');
