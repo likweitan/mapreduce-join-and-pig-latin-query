@@ -1,14 +1,5 @@
 -- Write a Pig Latin query that outputs the login of all users in NY state.
 
-/**
- * Write a Pig Latin query that outputs the login of all users in NY state. (local mode)
- *
- * As input it will read from a CSV file that contains descriptions about users.
- * Each line in the user collection contains: login, name and state from a specific user.
- */
-
--- Use the PigStorage function to load the user collection file into the raw bag as an array of records.
--- Input: (login, name, state)
 users = LOAD 'hdfs://localhost:9000/group_assignment/users.csv' USING PigStorage(',') AS (login:chararray, name:chararray, state:chararray);
 
 -- Use the FILTER command to remove all records with a state which is not NY.
