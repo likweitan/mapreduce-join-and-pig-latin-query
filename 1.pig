@@ -18,4 +18,4 @@ users_in_NY = FILTER users BY state == 'NY';
 login_of_users_in_NY = FOREACH users_in_NY GENERATE login;
 
 -- Use the default Pig output function to store the results.
-STORE login_of_users_in_NY INTO 'hdfs://localhost:9000/group_assignment/1/' USING PigStorage (',');
+STORE login_of_users_in_NY INTO 'hdfs://localhost:9000/group_assignment/results/1/' USING PigStorage (',');

@@ -4,4 +4,4 @@ filtered_tweets = FILTER raw BY (content matches '.*favorite.*');
 
 filtered_tweets_ordered_by_id = ORDER filtered_tweets BY id;
 
-STORE filtered_tweets_ordered_by_id INTO 'hdfs://localhost:9000/group_assignment/2/' USING PigStorage (',');
+STORE filtered_tweets_ordered_by_id INTO 'hdfs://localhost:9000/group_assignment/results/2/' USING PigStorage (',');
