@@ -1,4 +1,4 @@
-tweets = LOAD 'hdfs://localhost:9000/group_assignment/tweets.csv' USING PigStorage(',') AS (id:chararray, content:chararray, login:chararray);
+tweets = LOAD 'hdfs://localhost:9000/group_assignment/tweets.csv' USING PigStorage(',') AS (id:long, content:chararray, login:chararray);
 
 filtered_tweets = FILTER tweets BY (content matches '.*favorite.*');
 
